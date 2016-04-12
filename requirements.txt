@@ -1,0 +1,5 @@
+click==6.6
+enum34==1.1.2
+fsed==0.5.2
+korean==0.1.7
+mamba==0.8.6
