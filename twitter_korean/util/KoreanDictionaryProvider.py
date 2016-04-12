@@ -22,23 +22,27 @@ KoreanDictionaryProvider
 '''
 __all__ = ['korean_dictionary', 'typo_dictionary', 'correct_typo']
 
-import fileinput
+import sys
 import os.path
+import pkgutil
 from collections import namedtuple
+from itertools import chain
 
-import click
-click.disable_unicode_literals_warning = True
-from fsed import fsed
+from fsed.ahocorasick import AhoCorasickTrie
 
 from KoreanPos import KoreanPos as Pos
 
-dict_dir = 'dict'
+import twitter_korean
+
+def pkg_data_lines(*resources, **kwargs):
+    return chain.from_iterable(
+        pkgutil.get_data(kwargs.get('package', twitter_korean.__name__),
+                         os.path.join(kwargs.get('resources_root', twitter_korean.RESOURCES_ROOT),
+                                      resource)).decode('utf-8').splitlines()
+            for resource in resources)
 
 def read_words(*filenames):
-    return set(line.rstrip()
-                    for line in fileinput.input((os.path.join(dict_dir, filename)
-                                                    for filename in filenames),
-                                                openhook=fileinput.hook_encoded("utf-8")))
+    return set(line for line in pkg_data_lines(*filenames))
 
 korean_dictionary = {
     Pos.Noun: read_words(
@@ -64,8 +68,10 @@ korean_dictionary = {
 }
 
 def build_typo_trie():
-    pattern_file = os.path.join(dict_dir, 'typos/typos.tsv')
-    trie, boundaries = fsed.build_trie(pattern_file, 'tsv', 'utf-8', False)
+    trie = AhoCorasickTrie()
+    for line in pkg_data_lines('typos/typos.txt'):
+        before, after = line.split() #decode('utf-8').split()
+        trie[before] = after
     return trie
 
 typo_dictionary = build_typo_trie()
