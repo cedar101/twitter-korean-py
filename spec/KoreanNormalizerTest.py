@@ -1,3 +1,4 @@
+#!/usr/bin/env mamba
 # -*- encoding: utf-8 -*-
 '''
  *
