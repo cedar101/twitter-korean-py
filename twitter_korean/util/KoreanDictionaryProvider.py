@@ -30,7 +30,7 @@ from itertools import chain
 
 from fsed.ahocorasick import AhoCorasickTrie
 
-from KoreanPos import KoreanPos as Pos
+from .KoreanPos import KoreanPos as Pos
 
 import twitter_korean
 
