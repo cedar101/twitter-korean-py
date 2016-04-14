@@ -19,69 +19,67 @@
  * limitations under the License.
  *
 '''
-from __future__ import unicode_literals
-
 from twitter_korean import normalize, normalize_coda_n, correct_typo
 
-with context(b'Test KoreanNormalizer'):
-    with it(b"normalize should normalize ㅋㅋ ㅎㅎ ㅠㅜ chunks") :
+with context('Test KoreanNormalizer'):
+    with it("normalize should normalize ㅋㅋ ㅎㅎ ㅠㅜ chunks"):
         assert(normalize(
-            "안됔ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ내 심장을 가격했엌ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ")
-            == "안돼ㅋㅋ내 심장을 가격했어ㅋㅋ")
-        assert(normalize("무의식중에 손들어버려섴ㅋㅋㅋㅋ") == "무의식중에 손들어버려서ㅋㅋ")
-        assert(normalize("기억도 나지아낳ㅎㅎㅎ") == "기억도 나지아나ㅎㅎ")
-        assert(normalize("근데비싸서못머구뮤ㅠㅠ") == "근데비싸서못먹음ㅠㅠ")
+            u"안됔ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ내 심장을 가격했엌ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ")
+            == u"안돼ㅋㅋ내 심장을 가격했어ㅋㅋ")
+        assert(normalize(u"무의식중에 손들어버려섴ㅋㅋㅋㅋ") == u"무의식중에 손들어버려서ㅋㅋ")
+        assert(normalize(u"기억도 나지아낳ㅎㅎㅎ") == u"기억도 나지아나ㅎㅎ")
+        assert(normalize(u"근데비싸서못머구뮤ㅠㅠ") == u"근데비싸서못먹음ㅠㅠ")
 
-        assert(normalize("미친 존잘니뮤ㅠㅠㅠㅠ") == "미친 존잘님ㅠㅠ")
-        assert(normalize("만나무ㅜㅜㅠ") == "만남ㅜㅜ")
-        assert(normalize("가루ㅜㅜㅜㅜ") == "가루ㅜㅜ")
-        assert(normalize("최지우ㅜㅜㅜㅜ") == "최지우ㅜㅜ")
+        assert(normalize(u"미친 존잘니뮤ㅠㅠㅠㅠ") == u"미친 존잘님ㅠㅠ")
+        assert(normalize(u"만나무ㅜㅜㅠ") == u"만남ㅜㅜ")
+        assert(normalize(u"가루ㅜㅜㅜㅜ") == u"가루ㅜㅜ")
+        assert(normalize(u"최지우ㅜㅜㅜㅜ") == u"최지우ㅜㅜ")
 
-        assert(normalize("유성우ㅠㅠㅠ") == "유성우ㅠㅠ")
-        assert(normalize("ㅎㅎㅎㅋㅋ트위터ㅋㅎㅋ월드컵ㅠㅜㅠㅜㅠ")
-               == "ㅎㅎㅋㅋ트위터ㅋㅎㅋ월드컵ㅠㅜ")
+        assert(normalize(u"유성우ㅠㅠㅠ") == u"유성우ㅠㅠ")
+        assert(normalize(u"ㅎㅎㅎㅋㅋ트위터ㅋㅎㅋ월드컵ㅠㅜㅠㅜㅠ")
+               == u"ㅎㅎㅋㅋ트위터ㅋㅎㅋ월드컵ㅠㅜ")
 
-        assert(normalize("예뿌ㅠㅠ") == "예뻐ㅠㅠ")
-        assert(normalize("고수야고수ㅠㅠ") == "고수야고수ㅠㅠ")
+        assert(normalize(u"예뿌ㅠㅠ") == u"예뻐ㅠㅠ")
+        assert(normalize(u"고수야고수ㅠㅠ") == u"고수야고수ㅠㅠ")
 
-    with it(b"normalize should normalize repeated chunks") :
-        assert(normalize("땡큐우우우우우우") == "땡큐우우")
-        assert(normalize("구오오오오오오오오옹오오오") == "구오오옹오오")
+    with it("normalize should normalize repeated chunks") :
+        assert(normalize(u"땡큐우우우우우우") == u"땡큐우우")
+        assert(normalize(u"구오오오오오오오오옹오오오") == u"구오오옹오오")
 
-    with it(b"normalize should normalize repeated 2-letters") :
-        assert(normalize("훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍") == "훌쩍훌쩍")
-        assert(normalize("ㅋㅎㅋㅎㅋㅎㅋㅎㅋㅎㅋㅎ") == "ㅋㅎㅋㅎ")
+    with it("normalize should normalize repeated 2-letters") :
+        assert(normalize(u"훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍훌쩍") == u"훌쩍훌쩍")
+        assert(normalize(u"ㅋㅎㅋㅎㅋㅎㅋㅎㅋㅎㅋㅎ") == u"ㅋㅎㅋㅎ")
 
-    with it(b"normalize should not normalize non-Korean chunks") :
-        assert(normalize("http://11111.cccccom soooooooo !!!!!!!!!!!!!!!") ==
+    with it("normalize should not normalize non-Korean chunks") :
+        assert(normalize(u"http://11111.cccccom soooooooo !!!!!!!!!!!!!!!") ==
             "http://11111.cccccom soooooooo !!!!!!!!!!!!!!!")
 
-    with it(b"normalize should have correctTypo integrated") :
-        assert(normalize("가쟝 용기있는 사람이 머굼 되는거즤")
-               == "가장 용기있는 사람이 먹음 되는거지")
+    with it("normalize should have correctTypo integrated") :
+        assert(normalize(u"가쟝 용기있는 사람이 머굼 되는거즤")
+               == u"가장 용기있는 사람이 먹음 되는거지")
 
-    with it(b"normalize should have normalize_coda_n integrated") :
-        assert(normalize("오노딘가") == "오노디인가")
-        assert(normalize("관곈지") == "관계인지")
-        assert(normalize("생각하는건데") == "생각하는건데")
+    with it("normalize should have normalize_coda_n integrated") :
+        assert(normalize(u"오노딘가") == u"오노디인가")
+        assert(normalize(u"관곈지") == u"관계인지")
+        assert(normalize(u"생각하는건데") == u"생각하는건데")
 
-    with it(b"normalize_coda_n should normalize coda N nouns correctly") :
-        assert(normalize_coda_n("오노딘가") == "오노디인가")
-        assert(normalize_coda_n("소린가") == "소리인가")
-        assert(normalize_coda_n("쵸킨데") == "쵸킨데")  # Unknown noun
+    with it("normalize_coda_n should normalize coda N nouns correctly") :
+        assert(normalize_coda_n(u"오노딘가") == u"오노디인가")
+        assert(normalize_coda_n(u"소린가") == u"소리인가")
+        assert(normalize_coda_n(u"쵸킨데") == u"쵸킨데")  # Unknown noun
 
-    with it(b"normalize_coda_n should not normalize if the input is known in the dictionary") :
-        assert(normalize_coda_n("누군가") == "누군가")
-        assert(normalize_coda_n("군가") == "군가")
+    with it("normalize_coda_n should not normalize if the input is known in the dictionary") :
+        assert(normalize_coda_n(u"누군가") == u"누군가")
+        assert(normalize_coda_n(u"군가") == u"군가")
 
-    with it(b"normalize_coda_n should not normalize if the input is an adjective or a verb") :
-        assert(normalize_coda_n("가는건데") == "가는건데")
-        assert(normalize_coda_n("곤란한데") == "곤란한데")
-        assert(normalize_coda_n("생각하는건데") == "생각하는건데")
+    with it("normalize_coda_n should not normalize if the input is an adjective or a verb") :
+        assert(normalize_coda_n(u"가는건데") == u"가는건데")
+        assert(normalize_coda_n(u"곤란한데") == u"곤란한데")
+        assert(normalize_coda_n(u"생각하는건데") == u"생각하는건데")
 
-    with it(b"correct_typo should correct typos") :
-        #assert(correct_typo("하겟다") == "하겠다")
-        assert(correct_typo("가쟝 용기있는 사람이 머굼 되는거즤")
-               == "가장 용기있는 사람이 먹음 되는거지")
-        assert(correct_typo("만듀 먹것니? 먹겄서? 먹즤?")
-               == "만두 먹겠니? 먹겠어? 먹지?")
+    with it("correct_typo should correct typos") :
+        #assert(correct_typo(u"하겟다") == u"하겠다")
+        assert(correct_typo(u"가쟝 용기있는 사람이 머굼 되는거즤")
+               == u"가장 용기있는 사람이 먹음 되는거지")
+        assert(correct_typo(u"만듀 먹것니? 먹겄서? 먹즤?")
+               == u"만두 먹겠니? 먹겠어? 먹지?")
