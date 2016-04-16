@@ -21,7 +21,7 @@ def download_jar(cmdobj):
     dl = Downloader()
     try:
         dl.download(artifact, filename)
-    except RequestException, e:
+    except RequestException as e:
         print(e.msg)
 
 
