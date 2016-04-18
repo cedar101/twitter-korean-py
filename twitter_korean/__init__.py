@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+import os.path
 
-RESOURCES_ROOT = 'com.twitter.penguin.korean/src/main/resources/com/twitter/penguin/korean/util'
 JAR_DIR = 'data/lib'
+RESOURCES_ROOT = os.path.join(JAR_DIR, 'com/twitter/penguin/korean/util')
+#'com.twitter.penguin.korean/src/main/resources/com/twitter/penguin/korean/util'
 
 from .normalizer.KoreanNormalizer import normalize, normalize_coda_n
 from .util.KoreanDictionaryProvider import correct_typo
