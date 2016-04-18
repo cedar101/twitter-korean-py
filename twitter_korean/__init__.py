@@ -17,6 +17,5 @@ def extract_phrases(tokens, filter_spam=True, enable_hashtags=True):
     raise NotImplementedError
 
 if __name__ == "__main__":
-    from __future__ import unicode_literals, print_function
     import doctest
     doctest.testmod()
