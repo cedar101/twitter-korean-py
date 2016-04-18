@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 '''
  *
- * Twitter Korean Text - Scala library to process Korean text
+ * Python port of Twitter Korean Text - Scala library to process Korean text
  *
- * Copyright 2014 Twitter, Inc.
+ * Copyright 2016 Kim, Baeg-il.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -131,18 +131,17 @@ def process_normalization_candidate(m):
     )
     return normalized_chunk + to_normalize
 
-def second_to_last_decomposed(si):
-    # Implemented using simple imperative statements
-    # instead of pattern matching in the functional language Scala.
-    if si:
-        hc = HangulChar.decompose(si[-1])
-        if hc.coda == '':
-            return hc
-    return None
-
 def normalize_emotion_attached_chunk(s, to_normalize):
     # Implemented using simple imperative statements
-    # instead of pattern matching in the functional language Scala.
+    # instead of pattern matching in the functional language Scala :)
+
+    def second_to_last_decomposed(si):
+        if si:
+            hc = HangulChar.decompose(si[-1])
+            if hc.coda == '':
+                return hc
+        return None
+
     init = s[0:-1]
     hc = second_to_last_decomposed(init)
     o, v, c = HangulChar.decompose(s[-1])

@@ -1,10 +1,12 @@
 from __future__ import print_function
 
+import sys
 import os.path
+from zipfile import ZipFile
 
 from distutils import log
+from distutils.command.install_data import install_data
 import setuptools
-from zipfile import ZipFile
 
 #from maven.requestor import RequestException
 from maven.artifact import Artifact
@@ -16,6 +18,9 @@ artifact = Artifact(group_id='com.twitter.penguin', artifact_id='korean-text',
                     version='4.4')
 
 def download_jar(cmdobj):
+    '''Download and extract twitter-korean-text jar file'''
+    log.info('[pbr] Downloading twitter-korean-text jar file')
+
     filename = os.path.join(__name__.split('.')[0], JAR_DIR,
                             artifact.get_filename())
     dl = Downloader()
@@ -26,7 +31,7 @@ def download_jar(cmdobj):
         jar.extractall(JAR_DIR, text_files)
 
 class DownloadJarCommand(setuptools.Command):
-    __doc__ = '''Download twitter-korean-text jar file'''
+    __doc__ = download_jar.__doc__
     description = __doc__
     command_name = 'download_jar'
     user_options = []
@@ -37,10 +42,8 @@ class DownloadJarCommand(setuptools.Command):
     def finalize_options(self):
         pass
 
-    def run(self, *args, **kwargs):
-        log.info('[pbr] Downloading twitter-korean-text jar file')
+    def run(self):
         download_jar(self)
-        #return setuptools.Command.run(self)
 
 
 class TestCommand(setuptools.Command):
@@ -56,5 +59,5 @@ class TestCommand(setuptools.Command):
         pass
 
     def run(self):
-        import sys
+        self.run_command('download_jar')
         sys.exit(os.system('mamba -f documentation spec/*.py'))

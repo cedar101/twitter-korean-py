@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 '''
  *
- * Twitter Korean Text - Scala library to process Korean text
+ * Python port of Twitter Korean Text - Scala library to process Korean text
  *
- * Copyright 2014 Twitter, Inc.
+ * Copyright 2014 Kim, Baeg-il.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
