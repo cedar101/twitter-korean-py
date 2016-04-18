@@ -18,11 +18,11 @@ artifact = Artifact(group_id='com.twitter.penguin', artifact_id='korean-text',
 
 def download_jar(cmdobj):
     '''Download and extract twitter-korean-text jar file'''
-    log.info('[pbr] Downloading twitter-korean-text jar file')
-
     filename = os.path.join(JAR_PATH, artifact.get_filename())
+    log.info('[pbr] Downloading twitter-korean-text jar file to {}'.format(filename))
+
     dl = Downloader()
-    dl.download(artifact, filename) # may raise RequestException
+    dl.download(artifact, filename) # may raise RequestException or IOError
     with ZipFile(os.path.join(filename)) as jar:
         text_files = (filename for filename in jar.namelist()
                         if filename.endswith('.txt'))
