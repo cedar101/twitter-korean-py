@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import os.path
 
-JAR_DIR = 'data/lib'
-RESOURCES_ROOT = os.path.join(JAR_DIR, 'com/twitter/penguin/korean/util')
+#JAR_DIR = 'data/lib'
+#RESOURCES_ROOT = os.path.join(JAR_DIR, 'com/twitter/penguin/korean/util')
+RESOURCES_ROOT = 'com/twitter/penguin/korean/util'
 
 # lazy imports
 

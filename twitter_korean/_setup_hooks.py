@@ -10,23 +10,25 @@ import setuptools
 from maven.artifact import Artifact
 from maven.downloader import Downloader
 
-from twitter_korean import JAR_DIR
+#from twitter_korean import JAR_DIR
 
-JAR_PATH = os.path.join(__name__.split('.')[0], JAR_DIR)
+module_name = __name__.split('.')[0]
+#JAR_PATH = os.path.join(module_name, JAR_DIR)
 artifact = Artifact(group_id='com.twitter.penguin', artifact_id='korean-text',
                     version='4.4')
 
 def download_jar(cmdobj):
     '''Download and extract twitter-korean-text jar file'''
-    filename = os.path.join(JAR_PATH, artifact.get_filename())
-    log.info('[pbr] Downloading twitter-korean-text jar file to {}'.format(filename))
+    #filename = os.path.join(JAR_PATH, artifact.get_filename())
+    #log.info('[pbr] Downloading twitter-korean-text jar file to {}'.format(filename))
+    log.info('[pbr] Downloading twitter-korean-text jar file')
 
     dl = Downloader()
-    dl.download(artifact, filename) # may raise RequestException or IOError
-    with ZipFile(os.path.join(filename)) as jar:
+    dl.download(artifact) # may raise RequestException or IOError
+    with ZipFile(artifact.get_filename()) as jar:
         text_files = (filename for filename in jar.namelist()
                         if filename.endswith('.txt'))
-        jar.extractall(JAR_PATH, text_files)
+        jar.extractall(module_name, text_files)
 
 class DownloadJarCommand(setuptools.Command):
     __doc__ = download_jar.__doc__
