@@ -7,4 +7,7 @@ setup(
                     'six', 'future',
                     'maven-artifact>=0.1.4'],
     pbr=True,
+    dependency_links = [
+        'git+https://github.com/hamnis/maven-artifact.git@0.1.4#egg=maven-artifact-0.1.4'
+    ]
 )
