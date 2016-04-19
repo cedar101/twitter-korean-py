@@ -4,6 +4,7 @@ from setuptools import setup
 
 setup(
     setup_requires=['pbr>=1.9', 'setuptools>=17.1',
-                    'six', 'future', 'maven-artifact'],
+                    'six', 'future',
+                    'maven-artifact>=0.1.4'],
     pbr=True,
 )
