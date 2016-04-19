@@ -7,3 +7,11 @@ install: "pip install -r requirements.txt -r requirements-dev.txt"
 before_script: python setup.py develop
 script: mamba spec/*.py
 #after_success: 'coverage report'
+cache:
+  directories:
+    - $HOME/.m2
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+      - maven
