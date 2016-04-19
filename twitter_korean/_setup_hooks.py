@@ -6,7 +6,10 @@ from distutils import log
 from distutils.command.install_data import install_data
 import setuptools
 
-#from maven.requestor import RequestException
+import six
+if six.PY3:
+    from past import autotranslate
+    autotranslate(['maven'])
 from maven.artifact import Artifact
 from maven.downloader import Downloader
 
