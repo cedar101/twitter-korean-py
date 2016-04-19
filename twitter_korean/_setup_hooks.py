@@ -9,7 +9,7 @@ import setuptools
 import six
 if six.PY3:
     from past import autotranslate
-    autotranslate(['maven.downloader', 'maven.requestor'])
+    autotranslate('maven') #['maven.requestor', 'maven.downloader'])
 from maven.artifact import Artifact
 from maven.downloader import Downloader
 
