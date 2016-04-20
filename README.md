@@ -1,13 +1,16 @@
-[![Circle CI](https://circleci.com/gh/cedar101/twitter-korean-py.svg?style=svg)](https://circleci.com/gh/cedar101/twitter-korean-py)
-[![Build Status](https://travis-ci.org/cedar101/twitter-korean-py.svg?branch=master)](https://travis-ci.org/cedar101/twitter-korean-py)
 twitter-korean-py
 =================
+[![Circle CI](https://circleci.com/gh/cedar101/twitter-korean-py.svg?style=svg)](https://circleci.com/gh/cedar101/twitter-korean-py)
+[![Build Status](https://travis-ci.org/cedar101/twitter-korean-py.svg?branch=master)](https://travis-ci.org/cedar101/twitter-korean-py)
 twitter-korean-py는 [twitter-korean-text](https://github.com/twitter/twitter-korean-text)의 스칼라 코드를
 참고하여 파이썬으로 새로 코딩하여 포팅한 라이브러리입니다.
  * 현재는 정규화(normalizer)만 가능하며, 나머지 기능(토큰화, 어근화, 어구 추출)은 아직 구현하지 않았습니다.
  * [JPype](http://jpype.sourceforge.net)을 사용한 래퍼 인터페이스인 [twkorean](https://github.com/jaepil/twkorean)과는 달리, twitter-korean-text의 스칼라/자바 코드를 사용하지 않은 순수 파이썬(pure-python) 코드입니다.
  * 설치 스크립트는 twitter-korean-text의 maven repository에서 JAR 파일을 다운받은 후, 사전 파일만을 압축 해제하여 사용합니다.
    * 이 개념은 twkorean을 참고하였습니다.
+   * 파이썬 2.7에서는 [maven-artifact](https://github.com/hamnis/maven-artifact)라는 툴을 사용하여 maven 없이 설치 가능합니다.
+   * 파이썬 3.x에서는 maven(mvn)을 직접 실행해서 다운로드합니다.
+
 
 Examples
 --------
