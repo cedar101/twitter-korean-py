@@ -118,16 +118,18 @@ def normalize_coda_n(chunk):
     return chunk
 
 def process_normalization_candidate(m):
+    def normalized(chunk):
+        return (chunk in korean_dictionary[Pos.Noun] or
+            chunk[-1] in korean_dictionary[Pos.Eomi] or
+            chunk[-2:] in korean_dictionary[Pos.Eomi])
+
     chunk = m.group(1)
     to_normalize = m.group(2)
 
     normalized_chunk = (
-    chunk
-        if (chunk in korean_dictionary[Pos.Noun] or
-            chunk[-1] in korean_dictionary[Pos.Eomi] or
-            chunk[-2:] in korean_dictionary[Pos.Eomi])
-        else
-            normalize_emotion_attached_chunk(chunk, to_normalize)
+        chunk
+        if normalized(chunk)
+        else normalize_emotion_attached_chunk(chunk, to_normalize)
     )
     return normalized_chunk + to_normalize
 
