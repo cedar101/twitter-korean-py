@@ -3,7 +3,7 @@ python:
   - "2.7"
   - "3.5"
   - "pypy"
-install: "pip install -r requirements.txt -r requirements-dev.txt"
+install: "pip install -r requirements.txt -r test-requirements.txt"
 before_script: python setup.py develop
 script: mamba spec/*.py
 #after_success: 'coverage report'

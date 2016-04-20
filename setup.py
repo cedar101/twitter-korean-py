@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
 from setuptools import setup
+os.environ.update(SKIP_GIT_SDIST='1',
+                  SKIP_GENERATE_AUTHORS='1',
+                  SKIP_WRITE_GIT_CHANGELOG='1')
 
 setup(
     setup_requires=['pbr', #>=1.9', #'setuptools>=17.1',

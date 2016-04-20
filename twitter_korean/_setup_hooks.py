@@ -32,15 +32,17 @@ def download_jar(cmdobj):
     else:   # six.PY3
         # maven-artifact is not compatible with python 3
         # install and execute mvn
-        os.system(
-            'mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get'
-            ' -Dartifact={group_id}:{artifact_id}:{version}'.format(**artifact_info)
+        import subprocess
+        subprocess.check_call(
+            ['mvn', 'org.apache.maven.plugins:maven-dependency-plugin:2.8:get',
+             '-Dartifact={group_id}:{artifact_id}:{version}'.format(**artifact_info)]
         )
-        jar_path = os.path.join('~/.m2/repository',
-                                artifact_info.group_id.replace('.', '/'),
-                                artifact_info.artifact_id,
-                                artifact_info.version,
-                                '{artifact_id}-{version}.jar'.format(**artifact_info))
+        jar_path = os.path.expanduser(
+                        os.path.join('~/.m2/repository',
+                                     artifact_info['group_id'].replace('.', '/'),
+                                     artifact_info['artifact_id'],
+                                     artifact_info['version'],
+                                     '{artifact_id}-{version}.jar'.format(**artifact_info)))
 
     with ZipFile(jar_path) as jar:
         text_files = (filename for filename in jar.namelist()
