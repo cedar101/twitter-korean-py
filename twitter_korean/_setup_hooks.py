@@ -18,7 +18,7 @@ artifact_info = {'group_id': 'com.twitter.penguin', 'artifact_id': 'korean-text'
                  'version': '4.4'}
 
 def download_jar(cmdobj):
-    '''Download and extract twitter-korean-text jar file'''
+    '''Download and extract twitter-korean-text JAR file'''
     log.info('[pbr] Downloading twitter-korean-text jar file')
 
     if six.PY2:
