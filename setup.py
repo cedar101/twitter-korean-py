@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 from setuptools import setup
-os.environ.update(SKIP_GIT_SDIST='1',
-                  SKIP_GENERATE_AUTHORS='1',
+os.environ.update(SKIP_GENERATE_AUTHORS='1',
                   SKIP_WRITE_GIT_CHANGELOG='1')
 
 setup(
