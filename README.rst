@@ -1,5 +1,8 @@
 twitter-korean-py
 =================
+.. image:: https://badge.fury.io/py/twitter-korean.svg
+    :alt: PyPI index
+    :target: https://badge.fury.io/py/twitter-korean
 .. image:: https://circleci.com/gh/cedar101/twitter-korean-py.svg?style=svg
     :alt: Circle CI Build Status
     :target: https://circleci.com/gh/cedar101/twitter-korean-py
@@ -50,7 +53,7 @@ Running Tests
 
 명령행에서 ``mamba spec/*.py``를 실행하시면 됩니다.
 
-현재까지 구현된 내용에 대한 테스트 코드는 `spec/KoreanNormalizerTest.py <spec/KoreanNormalizerTest.py>`_ 입니다.
+현재까지 구현된 내용에 대한 테스트 코드는 `<spec/KoreanNormalizerTest.py>`_ 입니다.
 
 .. _`twitter-korean-py`: https://github.com/cedar101/twitter-korean-py
 .. _`twitter-korean-text`: https://github.com/twitter/twitter-korean-text
