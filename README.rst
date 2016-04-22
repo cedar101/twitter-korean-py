@@ -17,14 +17,8 @@ twitter-korean-py
    * 파이썬 2.7에서는 `maven-artifact`_ 라는 툴을 사용하여 maven 없이 설치 가능합니다.
    * 파이썬 3.x에서는 maven(mvn)을 직접 실행해서 다운로드합니다.
 
-.. _`twitter-korean-py`: https://github.com/cedar101/twitter-korean-py
-.. _`twitter-korean-text`: https://github.com/twitter/twitter-korean-text
-.. _twkorean: https://github.com/jaepil/twkorean
-.. _JPype: http://jpype.sourceforge.net
-.. _`maven-artifact`: https://github.com/hamnis/maven-artifact
-
-Examples
---------
+Usage Example
+-------------
 
 .. code:: python
 
@@ -47,3 +41,20 @@ Examples
     >>> phrases = twitter_korean.extract_phrases(tokens)
     Traceback (most recent call last):
     NotImplementedError: ...
+
+
+Running Tests
+-------------
+
+유닛 테스트 라이브러리는 BDD testing framework인 mamba_ 를 사용했습니다.
+명령행에서 `mamba spec/*.py`를 실행하시면 됩니다.
+
+현재까지 구현된 내용에 대한 테스트 코드는 `spec/KoreanNormalizer.py`_ 입니다.
+
+.. _`twitter-korean-py`: https://github.com/cedar101/twitter-korean-py
+.. _`twitter-korean-text`: https://github.com/twitter/twitter-korean-text
+.. _twkorean: https://github.com/jaepil/twkorean
+.. _JPype: http://jpype.sourceforge.net
+.. _`maven-artifact`: https://github.com/hamnis/maven-artifact
+.. _mamba: https://github.com/nestorsalceda/mamba
+.. _`spec/KoreanNormalizer.py`: spec/KoreanNormalizer.py
