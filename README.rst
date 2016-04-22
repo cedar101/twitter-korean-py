@@ -57,4 +57,4 @@ Running Tests
 .. _JPype: http://jpype.sourceforge.net
 .. _`maven-artifact`: https://github.com/hamnis/maven-artifact
 .. _mamba: https://github.com/nestorsalceda/mamba
-.. _`spec/KoreanNormalizerTest.py`: spec/KoreanNormalizer.py
+.. _`spec/KoreanNormalizerTest.py`: spec/KoreanNormalizerTest.py
