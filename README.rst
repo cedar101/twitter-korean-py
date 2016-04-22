@@ -49,7 +49,7 @@ Running Tests
 유닛 테스트 라이브러리는 BDD testing framework인 mamba_ 를 사용했습니다.
 명령행에서 `mamba spec/*.py`를 실행하시면 됩니다.
 
-현재까지 구현된 내용에 대한 테스트 코드는 `spec/KoreanNormalizer.py`_ 입니다.
+현재까지 구현된 내용에 대한 테스트 코드는 `spec/KoreanNormalizerTest.py`_ 입니다.
 
 .. _`twitter-korean-py`: https://github.com/cedar101/twitter-korean-py
 .. _`twitter-korean-text`: https://github.com/twitter/twitter-korean-text
@@ -57,4 +57,4 @@ Running Tests
 .. _JPype: http://jpype.sourceforge.net
 .. _`maven-artifact`: https://github.com/hamnis/maven-artifact
 .. _mamba: https://github.com/nestorsalceda/mamba
-.. _`spec/KoreanNormalizer.py`: spec/KoreanNormalizer.py
+.. _`spec/KoreanNormalizerTest.py`: spec/KoreanNormalizer.py
