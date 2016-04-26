@@ -51,7 +51,7 @@ Running Tests
 
 유닛 테스트 라이브러리는 BDD testing framework인 mamba_ 를 사용했습니다.
 
-명령행에서 ``mamba spec/*.py``를 실행하시면 됩니다.
+명령행에서 ``mamba spec/*.py`` 를 실행하시면 됩니다.
 
 현재까지 구현된 내용에 대한 테스트 코드는 `<spec/KoreanNormalizerTest.py>`_ 입니다.
 
